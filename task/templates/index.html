@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Min Value</th>
+                <th>Value</th>
+                <th>Max Value</th>
+                <th>Date</th>
+                <th>Sens history</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            {% for each in sensors %}
+
+                <tr>
+
+                    <td>{{ each.name }}</td>
+                    
+                    <td>{{ each.min_value }}</td>
+                    <td>{{ each.sensor_history.last.value }}</td>
+                    <td>{{ each.max_value }}</td>
+
+                    <td>{{ each.sensor_history.last.date }}</td>
+
+                    <td><a href="/sens_item/{{ each.slug }}">Link</a> </td>
+                </tr>
+
+
+            {% endfor %}
+
+
+        </tbody>
+
+
+
+
+
+    </table>
+</body>
+</html>

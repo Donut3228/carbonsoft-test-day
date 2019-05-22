@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <form method="POST">
+            {% csrf_token %}
+        <label for="item_val">Value: </label>
+        <input name="item_val" id="item_val" type="text" value="{{ item.value }}">
+        <label for="sensor">Sensor: </label>
+        <input name="sensor_name" id="sensor_name" type="text" value="{{ item.sensor }}">
+        <input type="submit" value="Update">
+    </form>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h2>{{ data.last.sensor }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Value</th>
+                <th>Date</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for each in data %}
+
+                <tr>
+                    <td>{{ each.value }}</td>
+                    <td>{{ each.date }}</td>
+                    <td><a href="/sens_item_edit/{{ each.id }}">Link</a></td>
+                    <td><a href="/sens_item_del/{{ each.id }}">Del</a></td>
+                </tr>
+
+
+            {% endfor %}
+
+
+        </tbody>
+    </table>
+
+</body>
+</html>
