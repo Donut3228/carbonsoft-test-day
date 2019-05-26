@@ -31,9 +31,9 @@
             {% for each in sensors %}
             <tr>
                 <td>{{ each.name }}</td>
-                <td>{{ each.min_value }}</td>
-                <td>{{ each.sensor_history.last.value }}</td>
-                <td>{{ each.max_value }}</td>
+                <td>{{ each.min_value }}%</td>
+                <td>{{ each.sensor_history.last.value }}%</td>
+                <td>{{ each.max_value }}%</td>
                 <td>{{ each.sensor_history.last.date }}</td>
                 <td><a href="{% url 'sens_item' each.slug %}">Edit</a> </td>
             </tr>
