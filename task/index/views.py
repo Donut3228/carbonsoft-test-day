@@ -29,8 +29,7 @@ def sens_item_edit(request, pk):
     item = models.SensorHistory.objects.get(pk=pk)
 
     item_name = 'Item ' + str(item.id) + ' edit'
-    breadcrumb = [{'name': item.sensor.name, 'link': 'sens_item'},
-                  {'name': item_name, 'link': 'sens_item_edit', 'args': item.id}]
+    breadcrumb = [{'name': item_name, 'link': 'sens_item_edit', 'args': item.id}]
 
     if request.method == 'POST':
         item.value = request.POST['item_val']
@@ -38,7 +37,7 @@ def sens_item_edit(request, pk):
 
         return redirect(reverse('sens_item', kwargs={"slug": item.sensor.slug}))
 
-    context = {'item': item, 'bread_items': breadcrumb}
+    context = {'bread_items': breadcrumb, 'item': item}
 
     return render(request, template_name="sens_item_edit.html", context=context)
 
@@ -47,13 +46,12 @@ def sens_item_del(request, pk):
     item = models.SensorHistory.objects.get(pk=pk)
 
     item_name = 'Item ' + str(item.id) + ' delete'
-    breadcrumb = [{'name': item.sensor.name, 'link': 'sens_item'},
-                  {'name': item_name, 'link': 'sens_item_edit', 'args': item.id}]
+    breadcrumb = [{'name': item_name, 'link': 'sens_item_del', 'args': item.id}]
 
     if request.method == 'POST':
         item.delete()
         return redirect(reverse('sens_item', kwargs={"slug": item.sensor.slug}))
 
-    context = {'item': item, 'bread_items': breadcrumb}
+    context = {'bread_items': breadcrumb, 'item': item}
 
     return render(request, template_name='sens_item_del.html', context=context)

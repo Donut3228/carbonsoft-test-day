@@ -1,12 +1,15 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load django_bootstrap_breadcrumbs %}
 
 
 {% block breadcrumbs %}
-{{ block.super }}
-{% for each in bread_items %}
-{% breadcrumb each.name each.link  item.sensor.slug  %}
-{% endfor %}
+    {{ block.super }}
+    
+    {% breadcrumb item.sensor.name 'sens_item' item.sensor.slug %}
+    
+    {% for each in bread_items %}
+        {% breadcrumb each.name each.link  item.id  %}
+    {% endfor %}
 {% endblock %}
 
 
@@ -39,6 +42,7 @@
             <form method="POST" class="row justify-content-center">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">You sure?</button>
+
             </form>
         </div>
 

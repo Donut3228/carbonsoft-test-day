@@ -4,11 +4,11 @@
 
 {% block breadcrumbs %}
     {{ block.super }}
-
+    
+    {% breadcrumb item.sensor.name 'sens_item' item.sensor.slug %}
+    
     {% for each in bread_items %}
-
-        {% breadcrumb each.name each.link item.sensor.slug  %}
-
+        {% breadcrumb each.name each.link  item.id  %}
     {% endfor %}
 {% endblock %}
 
@@ -44,3 +44,5 @@
 </html>
 
 {% endblock content %}
+
+
