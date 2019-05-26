@@ -20,9 +20,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Min Value</th>
                 <th>Value</th>
-                <th>Max Value</th>
                 <th>Date</th>
                 <th>Sens history</th>
             </tr>
@@ -30,10 +28,11 @@
         <tbody>
             {% for each in sensors %}
             <tr>
+
                 <td>{{ each.name }}</td>
-                <td>{{ each.min_value }}%</td>
-                <td>{{ each.sensor_history.last.value }}%</td>
-                <td>{{ each.max_value }}%</td>
+                <td><meter min="{{ each.min_value }}" max="{{ each.max_value }}" low="50"
+                    optimum="25" high="0" value="{{ each.sensor_history.last.value }}"></meter></td>
+
                 <td>{{ each.sensor_history.last.date }}</td>
                 <td><a href="{% url 'sens_item' each.slug %}">Edit</a> </td>
             </tr>
@@ -42,3 +41,12 @@
     </table>
 </div>
 {% endblock content %}
+
+
+<!-- <td>{{ each.min_value }}%</td>
+<td>{{ each.sensor_history.last.value }}%</td>
+<td>{{ each.max_value }}%</td>
+
+<th>Max Value</th>
+<th>Min Value</th>
+ -->
