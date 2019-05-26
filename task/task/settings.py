@@ -138,3 +138,5 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, "index/static"),
 ]
+
+BREADCRUMBS_TEMPLATE = "django_bootstrap_breadcrumbs/bootstrap4.html"

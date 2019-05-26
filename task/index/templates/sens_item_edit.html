@@ -1,4 +1,18 @@
 {% extends "base.html" %}
+{% load django_bootstrap_breadcrumbs %}
+
+
+{% block breadcrumbs %}
+    {{ block.super }}
+
+    {% for each in bread_items %}
+
+        {% breadcrumb each.name each.link item.sensor.slug  %}
+
+    {% endfor %}
+{% endblock %}
+
+
 
 {% block content %}
 <div class="container">
@@ -18,7 +32,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update</button>
-                <a href="{% url 'sens_item_del' slug item.id %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'sens_item_del' item.id %}" class="btn btn-danger">Delete</a>
             </form>
         </div>
     </div>

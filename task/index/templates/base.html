@@ -20,29 +20,18 @@
 
 <body class="container-fluid">
     <div class="container justify-content-center">
-        <nav>
-            <ol class="breadcrumb">
+        {% block breadcrumbs %}
+            {% clear_breadcrumbs %}
+            {% breadcrumb 'HOME' 'index' %}
+        {% endblock breadcrumbs %}
 
-                {% for each, value in breadcrumb.items %}
-
-                <li class="breadcrumb-item {% if forloop.last %} active {% endif %}">
-                    {% if forloop.last %}
-                    {{ each }}
-                    {% elif forloop.first %}
-                    <a href="{% url 'index' %}">HOME</a>
-                    {% else %}
-                    <a href="{% url value slug %}">{{ each }}</a>
-                    {% endif %}
-                </li>
-
-                {% endfor %}
-            </ol>
-        </nav>
-
+        {% block navbar %}
+            {% render_breadcrumbs 'django_bootstrap_breadcrumbs/bootstrap4.html' %}
+        {% endblock %}
 
 
         {% block content %}
-
+            
         {% endblock content %}
 
 

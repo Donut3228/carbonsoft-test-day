@@ -1,4 +1,13 @@
 {% extends 'base.html' %}
+{% load django_bootstrap_breadcrumbs %}
+
+
+{% block breadcrumbs %}
+{{ block.super }}
+{% for each in bread_items %}
+{% breadcrumb each.name each.link  item.sensor.slug  %}
+{% endfor %}
+{% endblock %}
 
 
 {% block content %}
@@ -20,7 +29,7 @@
                         <tr>
                             <td>{{ item.value }}</td>
                             <td>{{ item.date }}</td>
-                            <td><a href="{% url 'sens_item_edit' slug item.id %}">Edit</a></td>
+                            <td><a href="{% url 'sens_item_edit' item.id %}">Edit</a></td>
                         </tr>
                     </tbody>
                 </table>

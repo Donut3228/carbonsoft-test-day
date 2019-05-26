@@ -1,11 +1,18 @@
 {% extends "base.html" %}
 {% load static %}
+{% load django_bootstrap_breadcrumbs %}
 
 {% block head %}
 
 <link rel="stylesheet" href="{% static '/css/index.css' %}" />
 
 {% endblock head %}
+
+{% block breadcrumbs %}
+    {{ block.super }}
+{% endblock %}
+
+
 
 {% block content %}
 <div class="row justify-content-center">
