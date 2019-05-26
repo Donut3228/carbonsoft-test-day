@@ -28,10 +28,7 @@ def main():
 
     values = {'mem_val': mem_val, 'cpu_val': cpu_val, 'disks_val': disks_val}
     params = {'measure_time': measure_time}
-
-    try:
-        requests.post('http://localhost:8000/api/sensor-history/', data=values, params=params)
-        requests.post('https://python-sensor-app.herokuapp.com/api/sensor-history/', data=values, params=params)
+    requests.post('http://localhost:8000/api/sensor-history/', data=values, params=params)
 
 
 if __name__ == '__main__':

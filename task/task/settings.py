@@ -25,7 +25,7 @@ SECRET_KEY = 'bk*yvvrn=pxk$ls04o=#@9%@etn!mfo!!vriho*(m))8j%1ps8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.51', '127.0.0.1', 'localhost', 'https://python-sensor-app.herokuapp.com/']
+ALLOWED_HOSTS = ['192.168.1.51', '127.0.0.1', 'localhost', 'https://python-sensor-app.herokuapp.com/', '192.168.1.3']
 
 
 # Application definition

@@ -28,7 +28,7 @@
 
                 <tr>
                     <td>{{ each.value }}%</td>
-                    <td>{{ each.date }}</td>
+                    <td>{{ each.date|date:'d F Y H:i:s' }}</td>
                     <td><a href="{% url 'sens_item_edit' each.id %}">Edit</a></td>
                     <td><a href="{% url 'sens_item_del' each.id %}">Del</a></td>
                 </tr>
