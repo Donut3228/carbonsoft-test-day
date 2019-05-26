@@ -17,7 +17,7 @@ def index(request):
 
 
 def sensor_item(request, slug):
-    data = models.SensorHistory.objects.filter(sensor__slug=slug)
+    data = models.SensorHistory.objects.filter(sensor__slug=slug).order_by('-date')
     sensor = models.Sensor.objects.get(slug__exact=slug)
     item = data[0]
 
