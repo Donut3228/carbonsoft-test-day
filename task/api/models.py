@@ -17,7 +17,7 @@ class Sensor(models.Model):
 
 class SensorHistory(models.Model):
 
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True, blank=True)
     value = models.CharField(max_length=400)
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE, related_name='sensor_history')
     

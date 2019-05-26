@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.http import response
 from rest_framework import viewsets
 from .models import Sensor, SensorHistory
@@ -17,9 +17,15 @@ class SensorHistoryViewSet(viewsets.ModelViewSet):
     serializer_class = SensorHistorySerializer
 
     def create(self, request):
+
         values = request.data
-        sensor = Sensor.objects.get(slug__exact=values['slug'])
-        obj = SensorHistory.objects.create(value=values['value'], sensor=sensor)
+        measure_time = request.GET.get('measure_time')
+        # print()
+
+        for each in values:
+            sensor = Sensor.objects.get(slug__exact=each)
+            obj = SensorHistory.objects.create(value=values[each], sensor=sensor, date=measure_time)
+
         return response.HttpResponse()
         
 

@@ -1,16 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
+{% extends "base.html" %}
+
+
+{% block content %}
+
     <h2>{{ data.last.sensor }}</h2>
 
-    <table>
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Value</th>
@@ -26,8 +21,8 @@
                 <tr>
                     <td>{{ each.value }}</td>
                     <td>{{ each.date }}</td>
-                    <td><a href="/sens_item_edit/{{ each.id }}">Link</a></td>
-                    <td><a href="/sens_item_del/{{ each.id }}">Del</a></td>
+                    <td><a href="{% url 'sens_item_edit' slug each.id %}">Edit</a></td>
+                    <td><a href="{% url 'sens_item_del' slug each.id %}">Del</a></td>
                 </tr>
 
 
@@ -36,6 +31,4 @@
 
         </tbody>
     </table>
-
-</body>
-</html>
+{% endblock content %}

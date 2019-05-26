@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-sm-12">
+            <h2 class="">Delete item #{{ item.id }}</h2>
+
+            <div class="">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Value</th>
+                            <th>Date</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ item.value }}</td>
+                            <td>{{ item.date }}</td>
+                            <td><a href="{% url 'sens_item_edit' slug item.id %}">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <form method="POST" class="row justify-content-center">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">You sure?</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock content %}

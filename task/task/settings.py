@@ -25,7 +25,7 @@ SECRET_KEY = 'bk*yvvrn=pxk$ls04o=#@9%@etn!mfo!!vriho*(m))8j%1ps8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.51', '127.0.0.1',]
 
 
 # Application definition
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     'api',
     'rest_framework',
+    'django_bootstrap_breadcrumbs',
 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -59,7 +60,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates')
+            os.path.join(BASE_DIR, 'templates/'),
+            os.path.join(BASE_DIR, 'index/templates/'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -131,3 +133,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     )
 }
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "index/static"),
+]

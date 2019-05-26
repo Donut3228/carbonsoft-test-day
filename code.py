@@ -1,8 +1,6 @@
 import psutil
 import datetime
-import urllib.request
-import urllib.parse
-import json
+import requests
 
 def getVirtualMemValue():
     virtual_mem = psutil.virtual_memory()
@@ -25,24 +23,13 @@ def main():
     mem_val = getVirtualMemValue()
     cpu_val = getCPUValue()
     disks_val = getDisksValue()
+    measure_time = datetime.datetime.now()
+
 
     values = {'mem_val': mem_val, 'cpu_val': cpu_val, 'disks_val': disks_val}
+    params = {'measure_time': measure_time}
 
-    for each in values:
-
-        values_item = {'slug': each, 'value': values[each]}
-        json_data = json.dumps(values_item)
-        json_data = json_data.encode('ascii')
-        req = urllib.request.Request('http://localhost:8000/api/sensor-history/')
-        req.add_header('Content-Type', 'application/json')
-
-        response = urllib.request.urlopen(req, json_data)
-
-    
-
-
-    
-
+    requests.post('http://localhost:8000/api/sensor-history/', data=values, params=params)
 
 if __name__ == '__main__':
     main()
